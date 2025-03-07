@@ -1,22 +1,30 @@
-namespace Revision_1.Entities;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-public class Product
+namespace Revision_1.Entities
 {
-    private String name , id , description;
-    private decimal price;
+    [Table("Products")]
+    public class Product
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int id { get; set; }  
 
-    public Product( String _name , String _id , String _description , decimal _price ) {
-        this.name = _name;
-        this.id = _id;
-        this.description = _description;
-        this.price = _price;
+        [Required]
+        public string name { get; set; } = string.Empty;  
+
+        public string description { get; set; } = string.Empty;
+
+        [Required]
+        public decimal price { get; set; }
+
+        public Product() { }
+
+        public Product(string _name, decimal _price, string _description)
+        {
+            name = _name;
+            price = _price;
+            description = _description;
+        }
     }
-    public String getName() { return name; }
-    public String getId() { return id; }
-    public String getDescription() { return description; }
-    public decimal getPrice() { return price; }
-    public void setPrice( decimal _price ) { price = _price; }
-    public void setName( String _name ) { name = _name; }
-    public void setDescription( String _description ) { description = _description; }
-    public void setId ( String _id ) { id = _id; }
 }

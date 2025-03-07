@@ -5,5 +5,5 @@ using Revision_1.Entities;
 
 public interface IProductRepository : IGenericRepository<Product>   
 {
-    Task<IEnumerable<Product>> getProductsByPriceAsync(decimal minPrice);
+    Task<IEnumerable<Product>> GetProductsByPriceAsync(decimal minPrice);
 }
